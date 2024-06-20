@@ -13,17 +13,27 @@ public class LIDAR : MonoBehaviour
 	public Text ScanRateValue; // Text to display the LIDAR scanning rate (Hz)
 	public Text Range; // Text to display the range value of laser scan
 
-	//public float MinimumRange = 0.15f; // LIDAR minimum range (m)
-	public float MinimumRange = 145.7f; // LIDAR minimum range (m)
-	//public float MaximumRange = 12f; // LIDAR maximum range (m)
-	public float MaximumRange = 11772f; // LIDAR maximum range (m)
+	public float MinimumRange = 0.15f; // LIDAR minimum range (m)
+	public float MaximumRange = 12f; // LIDAR maximum range (m)
 	public int MeasurementsPerScan = 360; // Number of measurements per scan
 	public float Intensity = 47.0f; // Intensity of the laser ray
 
 	private List<string> RangeArray = new List<string>(); // List storing range values of a scan
 	private float timer = 0f; // Timer to synchronize laser scan updates
 
-	void Update()
+	private float globalScale;
+
+
+    private void Start()
+    {
+		globalScale = transform.localScale.x;
+
+		MinimumRange /= globalScale;
+		MaximumRange /= globalScale;
+
+		Debug.Log(globalScale);
+	}
+    void Update()
 	{
 		// SENSOR VISUALIZATION
 		if (EnableSensorVisualization.isOn) Laser.SetActive(true); // Enable visualization
@@ -42,7 +52,7 @@ public class LIDAR : MonoBehaviour
 		if (Physics.Raycast(LaserRay, out VisualizationRayHit))
 		{
 			Range.text = "Range (m): " + (VisualizationRayHit.distance + MinimumRange).ToString(); // Update the `Range` value to the `hit distance` if the ray is colliding
-			Laser.transform.localScale = new Vector3(1, 1, VisualizationRayHit.distance); // Update length of the `Laser` line
+			Laser.transform.localScale = new Vector3(1, 1, VisualizationRayHit.distance / globalScale); // Update length of the `Laser` line
 		}
 		else
 		{
