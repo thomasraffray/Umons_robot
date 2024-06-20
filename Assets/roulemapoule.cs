@@ -73,11 +73,11 @@ public class roulemapoule : MonoBehaviour
         ScanCameraBottomValue.text = ScanCameraBottom.value.ToString();
         ScanCameraTopValue.text = ScanCameraTop.value.ToString();
         
-        CameraBottom.transform.rotation = Quaternion.Euler(Robot.transform.rotation.x, ScanCameraBottom.value, Robot.transform.rotation.z);
-        CameraTop.transform.rotation = Quaternion.Euler(ScanCameraTop.value, CameraBottom.transform.rotation.y, CameraBottom.transform.rotation.z);
+        //CameraBottom.transform.rotation = Quaternion.Euler(Robot.transform.rotation.x, ScanCameraBottom.value, Robot.transform.rotation.z);
+        //CameraTop.transform.rotation = Quaternion.Euler(ScanCameraTop.value, CameraBottom.transform.rotation.y, CameraBottom.transform.rotation.z);
 
-        Debug.Log("Robot " + Robot.transform.rotation.x + "  " + Robot.transform.rotation.y + "  " + Robot.transform.rotation.z);
-        Debug.Log("Camera " + CameraBottom.transform.rotation.x + "  " + CameraBottom.transform.rotation.y + "  " + CameraBottom.transform.rotation.z);
+        //Debug.Log("Robot " + Robot.transform.rotation.x + "  " + Robot.transform.rotation.y + "  " + Robot.transform.rotation.z);
+        //Debug.Log("Camera " + CameraBottom.transform.rotation.x + "  " + CameraBottom.transform.rotation.y + "  " + CameraBottom.transform.rotation.z);
 
 
 
@@ -93,7 +93,7 @@ public class roulemapoule : MonoBehaviour
         float l_ticks = TICKS_REV * dl / (WHEEL_RADIUS * 2 * PI) * CONTROL_LOOP_PERIOD / 1000;
         float r_ticks = TICKS_REV * dr / (WHEEL_RADIUS * 2 * PI) * CONTROL_LOOP_PERIOD / 1000;
 
-        //Debug.Log(l_ticks + " et " + r_ticks);
+        Debug.Log(l_ticks + " et " + r_ticks);
 
         // Apply motor torque to move the robot
         //leftMotorWheel.motorTorque =  Torque * ScanVitesse.value;

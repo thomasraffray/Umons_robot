@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class LIDAR : MonoBehaviour
 {
-
 	public GameObject Scanner; // Reference `Scanner` gameobject
 	public GameObject Head; // Reference `Head` gameobject
 	public GameObject Laser; // Reference `Laser` gameobject
@@ -14,8 +13,10 @@ public class LIDAR : MonoBehaviour
 	public Text ScanRateValue; // Text to display the LIDAR scanning rate (Hz)
 	public Text Range; // Text to display the range value of laser scan
 
-	public float MinimumRange = 0.15f; // LIDAR minimum range (m)
-	public float MaximumRange = 12f; // LIDAR maximum range (m)
+	//public float MinimumRange = 0.15f; // LIDAR minimum range (m)
+	public float MinimumRange = 145.7f; // LIDAR minimum range (m)
+	//public float MaximumRange = 12f; // LIDAR maximum range (m)
+	public float MaximumRange = 11772f; // LIDAR maximum range (m)
 	public int MeasurementsPerScan = 360; // Number of measurements per scan
 	public float Intensity = 47.0f; // Intensity of the laser ray
 
